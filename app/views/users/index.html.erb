@@ -1,6 +1,9 @@
 welcome to instagram clone
 
-
+<% if current_user.nil?%>
     <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
     <%end%>
+<% else %>
+    <h4> pictures here </h4>
+<%end%>

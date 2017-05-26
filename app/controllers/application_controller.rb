@@ -3,10 +3,12 @@ class ApplicationController < ActionController::Base
     
   helper_method :current_user
   #makes the controllers methods available to the view.
-private
+  private
 
-def current_user
-  @current_user ||= User.find(session[:user]) if session[:user]
-end
+  def current_user
+    if session[:user]
+      @current_user ||= User.find_by_id(session[:user])
+    end
+  end
   
 end

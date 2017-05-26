@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     end
     
     def update
+        #find a way to skip password for updating
         if @user.update(update_params)
             flash[:sucess] = "Profile updated"
             redirect_to root_path
