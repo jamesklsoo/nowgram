@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :find_user, only: [:show, :update]
 
     def index
         @user = User.new
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
         @user = User.new
     end
     
-    
+
     def create
         @user = User.new(user_params)
         if @user.save
@@ -21,20 +22,10 @@ class UsersController < ApplicationController
         end
     end
 
-    def login
-        @user = User.find_by_email(params[:user][:email])
-        if @user.authenticate(params[:user][:password])
-            session[:user] = @user.id
-            redirect_to root_path
-        else
-            flash[:alert] = "Wrong email or password"
-            render :login
-        end
+    def show
     end
-
-    def logout
-        session[:user] = nil
-        redirect_to root_path
+    
+    def update
     end
     
         
@@ -43,6 +34,15 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:email, :fullname, :username, :password)
+    end
+    
+    def update_params
+        #need to add website and other instagrams options in table
+        params.require(:user).permit(:email, :fullname, :username, :password)
+    end
+
+    def find_user
+        @user = User.find(params[:id])
     end
     
     
