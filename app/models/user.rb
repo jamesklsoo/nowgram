@@ -5,8 +5,9 @@ class User < ApplicationRecord
     validate :valid_password, :valid_email
     before_create :valid_password, :valid_email
 
+    enum gender: [:not_specified, :male, :female]
 
-def valid_password
+    def valid_password
 		unless self.password.length >= 6
 			errors.add(:password, "length is too short.")
 		end

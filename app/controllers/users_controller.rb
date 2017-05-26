@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:show, :update]
+    before_action :find_user, only: [:show, :edit, :update]
 
     def index
         @user = User.new
@@ -25,7 +25,17 @@ class UsersController < ApplicationController
     def show
     end
     
+    def edit
+    end
+    
     def update
+        if @user.update(update_params)
+            flash[:sucess] = "Profile updated"
+            redirect_to root_path
+        else
+            flash[:alert] = "Update failed"
+            render :edit
+        end
     end
     
         
@@ -38,7 +48,7 @@ class UsersController < ApplicationController
     
     def update_params
         #need to add website and other instagrams options in table
-        params.require(:user).permit(:email, :fullname, :username, :password)
+        params.require(:user).permit(:email, :fullname, :username, :password, :website, :bio, :gender, :phone_numm)
     end
 
     def find_user
