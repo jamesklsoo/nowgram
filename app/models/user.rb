@@ -7,7 +7,7 @@ class User < ApplicationRecord
     validate :valid_password, :valid_email
     before_create :valid_password, :valid_email
 	
-	has_many :posts
+	has_many :posts, dependent: :destroy
     
 	enum gender: [:not_specified, :male, :female]
 

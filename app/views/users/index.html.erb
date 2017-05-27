@@ -1,5 +1,6 @@
 welcome to instagram clone
 
+<%=link_to "Upload New Image", new_user_post_path(current_user) %>
 <% if current_user.nil?%>
     <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
