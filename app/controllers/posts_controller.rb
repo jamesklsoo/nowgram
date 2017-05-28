@@ -28,6 +28,12 @@ class PostsController < ApplicationController
     end
     
     def update
+        @post.update(update_params)
+        if @post.save
+            redirect_to @post
+        else
+            render :edit
+        end
     end
     
     def destroy
@@ -40,6 +46,11 @@ class PostsController < ApplicationController
         params.require(:post).permit(:caption, {images: []})
     end
     
+    def update_params
+        params.require(:post).permit(:caption)
+    end
+    
+
     def find_post
         @post = Post.find(params[:id])
     end
