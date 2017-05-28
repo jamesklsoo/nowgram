@@ -1,5 +1,8 @@
 class User < ApplicationRecord
+	
 	mount_uploader :avatar, AvatarUploader
+	has_many :authentications, :dependent => :destroy
+
     has_secure_password
     
 	validates_presence_of :email
@@ -22,4 +25,18 @@ class User < ApplicationRecord
 			errors.add(:email, "is not valid.")
 		end
 	end
+
+	def self.create_with_auth_and_hash(authentication, auth_hash)
+      	create! do |user|
+			user.fullname = auth_hash["extra"]["raw_info"]["name"]
+      		user.email = auth_hash["extra"]["raw_info"]["email"]
+      		user.authentications << (authentication)
+			user.password = SecureRandom.hex(7)       
+		end
+	end
+
+  	def fb_token
+    	x = self.authentications.where(:provider => :facebook).first
+    	return x.token unless x.nil?
+  	end
 end

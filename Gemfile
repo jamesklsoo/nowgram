@@ -38,7 +38,11 @@ gem "mini_magick"
 gem "fog"
 #convert time to readable words
 gem 'time_ago_in_words'
-
+#add omniauth for fb
+gem 'omniauth'
+gem 'omniauth-facebook'
+#figaro for key security
+gem "figaro"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
