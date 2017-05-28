@@ -3,6 +3,7 @@ welcome to instagram clone
 <%=link_to "Upload New Image", new_post_path(current_user) %>
 <% if current_user %>
     <% @posts.each do |post|%><br>
+    <%= time_ago_in_words(post.time) unless post.time.blank?%><br>
     <%= image_tag post.images[0].url if post.images[0]%><br>
     <%= post.caption %>
     <%end%>

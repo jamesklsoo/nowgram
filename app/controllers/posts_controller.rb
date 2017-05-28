@@ -14,6 +14,7 @@ class PostsController < ApplicationController
        
         @post = Post.new(create_params)
         @post.user_id = current_user.id
+        @post.time = Time.now
         if @post.save
             redirect_to post_path(@post)
         else
