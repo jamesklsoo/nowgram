@@ -3,6 +3,20 @@
 <div class = 'container'>
 
 <div class="form-group">
+  <% if !@user.avatar? %>
+    <%= image_tag @user.avatar, :class => "img-responsive img-circle" %>
+  <% else %>
+     <%= image_tag @user.avatar.profile,class: "img-circle" %>
+     <%= form.label :remove_avatar do %>
+       <%= form.check_box :remove_avatar %>
+       Remove
+      <% end %>
+  <% end %>
+   <%= form.file_field :avatar %>
+   <%= form.hidden_field :avatar_cache %> 
+</div>
+
+<div class="form-group">
   <%= form.label :email %>
   <%= form.text_field :email, type: 'email', class: "form-control" %>
 </div>
@@ -33,9 +47,8 @@
 </div>
 
 <div class="form-group">
-   <%= select_tag 'user[gender]', options_for_select([["Not Specified", :not_specified], ["Male", :male],["Female", :female]]) %>
+  <%= select_tag 'user[gender]', options_for_select([["Not Specified", :not_specified], ["Male", :male],["Female", :female]]) %>
 <div>
-
 
 
 <div class="form-group">
