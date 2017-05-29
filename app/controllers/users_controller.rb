@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
     def index
         @user = User.new
-        @posts = Post.all.order("created_at DESC") 
+        @posts = Post.all.order("created_at DESC")
+        @comment = Comment.new
     end
     
     

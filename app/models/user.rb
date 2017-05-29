@@ -11,6 +11,7 @@ class User < ApplicationRecord
     before_create :valid_password, :valid_email
 	
 	has_many :posts, dependent: :destroy
+	has_many :comments
     
 	enum gender: [:not_specified, :male, :female]
 

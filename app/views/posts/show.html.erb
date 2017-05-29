@@ -2,3 +2,4 @@
 <%= time_ago_in_words(@post.time) unless @post.time.blank?%><br>
 <%= image_tag @post.images[0] %><br>
 <%= @post.caption %>
+<%= @post.comments%>
