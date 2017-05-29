@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     private
 
     def create_params
-        params.require(:post).permit(:caption, {images: []})
+        params.require(:post).permit(:caption, {images: []}, :price)
     end
     
     def update_params

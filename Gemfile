@@ -43,6 +43,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 #figaro for key security
 gem "figaro"
+#paymenet gateway
+gem 'braintree'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
