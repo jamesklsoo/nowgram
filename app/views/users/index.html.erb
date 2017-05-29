@@ -6,6 +6,10 @@ welcome to instagram clone
     <%= time_ago_in_words(post.time) unless post.time.blank?%><br>
     <%= image_tag post.images[0].url if post.images[0]%><br>
     <%= post.caption %>
+    <%= post.comments.each do |comment|%>
+    <%= comment.user.fullname%>
+    <%= comment.comments%>
+    <%end%>
     <%= form_for [post, @comment] do |form| %>
     <%= form.text_area :comments, placeholder: "Add a comment...", id: 'new-comment-text' %>
     <%= form.submit "Submit", class: 'submit-comment-button' %>
