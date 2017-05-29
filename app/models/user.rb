@@ -12,6 +12,7 @@ class User < ApplicationRecord
 	
 	has_many :posts, dependent: :destroy
 	has_many :comments
+	has_many :likes
     
 	enum gender: [:not_specified, :male, :female]
 

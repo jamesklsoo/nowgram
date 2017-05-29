@@ -1,5 +1,6 @@
 welcome to instagram clone
-<div class = "clm-3-6-3">
+<div class = "col-sm-4"></div>
+<div class = "col-sm-4">
 <%=link_to "Upload New Image", new_post_path(current_user) %>
 <% if current_user %>
     <% @posts.each do |post|%><br>
@@ -7,6 +8,7 @@ welcome to instagram clone
     <%= image_tag post.images[0].url if post.images[0]%><br>
     <span class="likes_count"> <%= post.likes.count %> </span> <span class="likes-word"><%= 'like'.pluralize(post.likes.count) %></span>
     <%= link_to post_likes_path(post), class: 'likes-link' do %><br>
+    Like
     <%end%>
     <%= post.caption %>
     <%= post.comments.each do |comment|%>
@@ -25,3 +27,4 @@ welcome to instagram clone
     <%end%>
 <%end%>
 </div>
+<div class = "col-sm-4">
