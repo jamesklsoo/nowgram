@@ -1,15 +1,19 @@
 welcome to instagram clone
-
+<div class = "clm-3-6-3">
 <%=link_to "Upload New Image", new_post_path(current_user) %>
 <% if current_user %>
     <% @posts.each do |post|%><br>
     <%= time_ago_in_words(post.time) unless post.time.blank?%><br>
     <%= image_tag post.images[0].url if post.images[0]%><br>
+    <span class="likes_count"> <%= post.likes.count %> </span> <span class="likes-word"><%= 'like'.pluralize(post.likes.count) %></span>
+    <%= link_to post_likes_path(post), class: 'likes-link' do %><br>
+    <%end%>
     <%= post.caption %>
     <%= post.comments.each do |comment|%>
     <%= comment.user.fullname%>
     <%= comment.comments%>
     <%end%>
+    
     <%= form_for [post, @comment] do |form| %>
     <%= form.text_area :comments, placeholder: "Add a comment...", id: 'new-comment-text' %>
     <%= form.submit "Submit", class: 'submit-comment-button' %>
@@ -20,3 +24,4 @@ welcome to instagram clone
     <%= render partial: '/users/form', object: form %>
     <%end%>
 <%end%>
+</div>

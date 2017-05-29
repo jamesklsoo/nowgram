@@ -1,5 +1,9 @@
 <br>
 <%= time_ago_in_words(@post.time) unless @post.time.blank?%><br>
 <%= image_tag @post.images[0] %><br>
+<span class="likes_count"> <%= @post.likes.count %> </span> <span class="likes-word"><%= 'like'.pluralize(@post.likes.count) %></span>
+<%= link_to post_likes_path(@post), class: 'likes-link' do %><br>
+Like
+<%end%>
 <%= @post.caption %>
 <%= @post.comments%>
