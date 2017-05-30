@@ -1,0 +1,31 @@
+<div class = "col-sm-4"></div>
+<div class = "col-sm-4">
+<br>
+<% if current_user %>
+<%=link_to "Upload New Image", new_post_path, class: "upload-link btn btn-primary" %><br>
+    <% @posts.each do |post|%><br>
+        <%= time_ago_in_words(post.time) unless post.time.blank?%><br>
+        <%= link_to "Go to Post", post_path(post.id) %>
+        <%= image_tag post.images[0].url if post.images[0]%><br>
+        <span class="likes_count"> <%= post.likes.count %> </span> <span class="likes-word"><%= 'like'.pluralize(post.likes.count) %></span>
+        <%= link_to post_likes_path(post), class: 'likes-link' do %><br>
+        Like
+          <% end %>
+    <%= post.caption %><br>
+        <% post.comments.each do |comment|%>
+        <b><%= comment.user.fullname%></b>&nbsp;<%= comment.comments%><br>
+    <%end%>
+    
+    <%= form_for [post, @comment] do |form| %>
+        <%= form.text_area :comments, placeholder: "Add a comment...", id: 'new-comment-text' %>
+        <%= form.submit "Submit", class: 'submit-comment-button' %>
+        <%end%>
+    <%end%>
+<% else %>
+    <%= form_for @user do |form| %>
+    <%= render partial: '/users/form', object: form %>
+    <%end%>
+<%end%>
+</div>
+<div class = "col-sm-4"></div>
+

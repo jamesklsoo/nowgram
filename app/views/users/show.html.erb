@@ -1,1 +1,9 @@
-<%= @user.fullname%>
+<div class = "container">
+
+<h3><%= @user.fullname %></h3>
+<% @user_post.each do |post|%>
+<%= image_tag post.images[0].url if post.images[0]%><br>
+<%= post.caption%><br>
+<hr>
+<%end%>
+</div>

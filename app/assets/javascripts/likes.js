@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $('.likes-link').on('click', function(event) {
     event.preventDefault();
-
     var likeCount = $(this).siblings('.likes_count');
     // click again uncount
     $.post(this.href, function(response) {

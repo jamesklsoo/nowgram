@@ -1,5 +1,6 @@
 <br>
-<%= link_to "Buy Image", payment_new_path %><br>
+<div class = "container">
+<%= link_to "Buy Image", payment_new_path %>&nbsp; $<%=@post.price%><br>
 <%= time_ago_in_words(@post.time) unless @post.time.blank?%><br>
 <%= image_tag @post.images[0] %><br>
 <span class="likes_count"> <%= @post.likes.count %> </span> <span class="likes-word"><%= 'like'.pluralize(@post.likes.count) %></span>
@@ -11,3 +12,5 @@ Like
 <%= comment.user.fullname %>
 <%= comment.comments %>
 <%end%>
+
+<%= link_to "Edit", edit_post_path %>

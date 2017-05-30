@@ -5,10 +5,11 @@ class User < ApplicationRecord
 
     has_secure_password
     
+	validates_presence_of :fullname
 	validates_presence_of :email
-    validates_presence_of :password
-    validate :valid_password, :valid_email
-    before_create :valid_password, :valid_email
+	validates :password, presence: true, length: { in: 6..20 }
+    validate :valid_email
+    before_create :valid_email
 	
 	has_many :posts, dependent: :destroy
 	has_many :comments
@@ -16,11 +17,11 @@ class User < ApplicationRecord
     
 	enum gender: [:not_specified, :male, :female]
 
-    def valid_password
-		unless self.password.length >= 6
-			errors.add(:password, "length is too short.")
-		end
-	end
+    # def valid_password
+	# 	unless self.password.length >= 6
+	# 		errors.add(:password, "length is too short.")
+	# 	end
+	# end
 	
 	def valid_email
 		unless self.email =~ /\w+@\w+\.\w{2,}/
