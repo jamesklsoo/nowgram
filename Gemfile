@@ -45,12 +45,22 @@ gem 'omniauth-facebook'
 gem "figaro"
 #paymenet gateway
 gem 'braintree'
+#for searching
+gem 'filterrific'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem "rspec-given"
+  gem 'spring'
+  gem 'shoulda-matchers'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
 end
 
 group :development do

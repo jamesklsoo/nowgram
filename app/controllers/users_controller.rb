@@ -5,6 +5,19 @@ class UsersController < ApplicationController
         @user = User.new
         @posts = Post.all.order("created_at DESC")
         @comment = Comment.new
+
+        @filterrific = initialize_filterrific(User, params[:filterrific],
+            select_options: {
+            sorted_by: User.options_for_sorted_by
+        },
+        ) or return
+
+        @users = @filterrific.find
+
+        respond_to do |format|
+            format.html
+            format.js
+        end
     end
     
     
