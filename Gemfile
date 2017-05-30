@@ -45,6 +45,8 @@ gem 'omniauth-facebook'
 gem "figaro"
 #paymenet gateway
 gem 'braintree'
+#for searching
+gem 'filterrific'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

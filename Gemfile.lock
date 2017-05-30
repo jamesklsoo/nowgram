@@ -71,6 +71,7 @@ GEM
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
+    filterrific (2.1.2)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.40.0)
@@ -348,6 +349,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   figaro
+  filterrific
   fog
   jbuilder (~> 2.5)
   jquery-rails
