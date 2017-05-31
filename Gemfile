@@ -47,6 +47,8 @@ gem "figaro"
 gem 'braintree'
 #for searching
 gem 'filterrific'
+#seed
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
