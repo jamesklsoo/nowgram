@@ -6,7 +6,7 @@
   <% if !@user.avatar? %>
     <%= image_tag @user.avatar, :class => "img-responsive img-circle" %>
   <% else %>
-     <%= image_tag @user.avatar.profile,class: "img-circle" %>
+     <%= image_tag @user.avatar.thumb, class: "img-circle" %>
      <%= form.label :remove_avatar do %>
        <%= form.check_box :remove_avatar %>
        Remove

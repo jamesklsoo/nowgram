@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	
+	require 'carrierwave/orm/activerecord'
 	mount_uploader :avatar, AvatarUploader
 	has_many :authentications, :dependent => :destroy
 

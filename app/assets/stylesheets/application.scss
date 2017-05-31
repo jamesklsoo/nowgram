@@ -1,12 +1,5 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "payment";
-
-.profile-link {
-    float: right;
-    margin-right: 20px;
-}
-
-.homepage-link {
-    margin-left :20px;
-}
+@import "posts";
+@import "users";
