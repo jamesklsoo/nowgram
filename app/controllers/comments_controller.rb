@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+    before_action :sign_in?
     def new
     end
 
@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
         @comment = @post.comments.new(comment_params)
         @comment.user_id = current_user.id
         if @comment.save
-            redirect_to @post
+            redirect_to root_path
         end
     end
     
@@ -18,7 +18,12 @@ class CommentsController < ApplicationController
         params.require(:comment).permit(:comments)
     end
     
-
+     def sign_in?
+        if current_user.nil?
+            flash[:danger] = 'Please sign in.'
+            redirect_to '/login'
+        end 
+end  
 
 end
 

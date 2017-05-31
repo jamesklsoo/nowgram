@@ -6,13 +6,7 @@ Rails.application.routes.draw do
     resources :comments, :likes
   end
   
-
-  
-
-  
-  
-
-  root 'users#index'
+  root 'posts#index'
 
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create'

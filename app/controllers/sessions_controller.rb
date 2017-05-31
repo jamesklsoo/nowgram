@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
             # Save the user id inside the browser cookie. This is how we keep the user 
             # logged in when they navigate around our website.
             session[:user] = @user.id
-            redirect_to root_path, notice: "Signed in!"
+            flash[:success] = "Signed in!"
+            redirect_to root_path
         else
             # If user's login doesn't work, send them back to the login form.
             render :new
@@ -22,7 +23,8 @@ class SessionsController < ApplicationController
     def destroy
         #clear out session    
         reset_session
-        redirect_to login_path, notice: "Signed out!"
+        flash[:danger] = "Signed out."
+        redirect_to login_path
     end
 
     #fb login
@@ -35,7 +37,7 @@ class SessionsController < ApplicationController
             flash[:success] = "Signed in!"
         else
             user = User.create_with_auth_and_hash(authentication, auth_hash)  
-            flash[:notice] = "User created - confirm or edit details..."
+            flash[:info] = "User created - confirm or edit details..."
         end
         session[:user] = user.id
         redirect_to root_path

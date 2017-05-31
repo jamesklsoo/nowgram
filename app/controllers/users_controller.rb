@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
     def index
         @user = User.new
-        @posts = Post.all.order("created_at DESC")
-        @comment = Comment.new
+        # @posts = Post.all.order("created_at DESC")
+        # @comment = Comment.new
 
         @filterrific = initialize_filterrific(User, params[:filterrific],
             select_options: {
@@ -32,24 +32,25 @@ class UsersController < ApplicationController
             flash[:success] = "User has been created"
             redirect_to root_path
         else
-            flash[:error] = "Invalid input"
+            flash.now[:danger] = "Invalid input"
             render :new
         end
     end
 
     def show
+        @user_post = @user.posts.order("created_at DESC")
     end
     
     def edit
     end
     
     def update
-        #find a way to skip password for updating
-        if @user.update(update_params)
-            flash[:sucess] = "Profile updated"
-            redirect_to root_path
+        @user.update(update_params)
+            if @user.save(validate: false)
+            flash[:success] = "Profile updated"
+            redirect_to @user
         else
-            flash[:alert] = "Update failed"
+            flash.now[:danger] = "Update failed"
             render :edit
         end
     end
@@ -64,7 +65,7 @@ class UsersController < ApplicationController
     
     def update_params
         #need to add website and other instagrams options in table
-        params.require(:user).permit(:email, :fullname, :username, :password, :website, :bio, :gender, :phone_numm)
+        params.require(:user).permit(:email, :fullname, :username, :password, :website, :bio, :gender, :phone_num, :avatar)
     end
 
     def find_user

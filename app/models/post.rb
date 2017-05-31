@@ -5,4 +5,5 @@ class Post < ApplicationRecord
     has_many :likes
 
     validates_presence_of :images
+    validates_presence_of :price
 end

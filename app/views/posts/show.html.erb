@@ -1,13 +1,16 @@
 <br>
-<%= link_to "Buy Image", payment_new_path %><br>
+<div class = "container text-center">
+<%= link_to "Buy Image", payment_new_path %>&nbsp; $<%=@post.price%><br>
 <%= time_ago_in_words(@post.time) unless @post.time.blank?%><br>
-<%= image_tag @post.images[0] %><br>
+<%= image_tag @post.images[0].display.url %><br>
 <span class="likes_count"> <%= @post.likes.count %> </span> <span class="likes-word"><%= 'like'.pluralize(@post.likes.count) %></span>
-<%= link_to post_likes_path(@post), class: 'likes-link' do %><br>
-Like
+<%= link_to post_likes_path(@post), class: 'likes-link' do %>
+Like<br>
 <%end%>
-<%= @post.caption %>
+<%= @post.caption %><br>
 <% @post.comments.each do |comment| %>
-<%= comment.user.fullname %>
-<%= comment.comments %>
+<b><%= comment.user.fullname %></b>
+<%= comment.comments %><br>
 <%end%>
+
+<%= link_to "Edit caption", edit_post_path, class: "btn btn-default" %>
