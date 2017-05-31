@@ -5,7 +5,7 @@
 <%=link_to "Upload New Image", new_post_path, class: "upload-link btn btn-primary" %><br>
     <% @posts.each do |post|%><br>
         <div class = "image-details">
-        <%= link_to post.user.fullname, user_path(post.user_id) %><br>
+        <b><%= link_to post.user.fullname, user_path(post.user_id) %></b><br>
         <%= time_ago_in_words(post.time) unless post.time.blank?%>&nbsp;
         <%= link_to "Go to Post", post_path(post.id) %><br>
         </div>

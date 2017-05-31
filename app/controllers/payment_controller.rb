@@ -5,13 +5,13 @@ class PaymentController < ApplicationController
     end
 
     def checkout
-        post = Post.find(params[:id])
+        buying = Buying.find(params[:id])
         
 
         nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
 
         result = Braintree::Transaction.sale(
-        :amount => post.price, #this is currently hardcoded
+        :amount => buying.post.price, #this is currently hardcoded
         :payment_method_nonce => nonce_from_the_client,
         :options => {
         :submit_for_settlement => true

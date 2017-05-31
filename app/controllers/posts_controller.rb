@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     end
     
     def show
+        @buying = Buying.new
     end
     
     def edit

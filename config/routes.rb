@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users 
   resources :posts do
-    resources :comments, :likes
+    resources :comments, :likes, :buyings
   end
   
   root 'posts#index'
