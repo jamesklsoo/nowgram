@@ -12,7 +12,6 @@
 <div class= "text-center ">
 <% @user_post.each do |post|%>
 <%= link_to image_tag (post.images[0].display.url if post.images[0])%><br>
-<%= link_to "Go to post", post_path(post.id)%>
 <hr>
 <%end%>
 </div>
