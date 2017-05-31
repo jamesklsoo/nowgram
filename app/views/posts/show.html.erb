@@ -12,8 +12,10 @@ Like<br>
 <b><%= comment.user.fullname %></b>
 <%= comment.comments %><br>
 <%end%>
+<% if current_user.id == @post.user_id%>
 <%= link_to "Edit caption", edit_post_path, class: "btn btn-default" %>
+<%else%>
 <hr>
-<% if current_user.id != @post.user_id%>
+<b> Enter address to buy this image </b>
 <%= render 'buyings/form'%>
 <%end%>
