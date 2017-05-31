@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             flash[:success] = "User has been created"
-            redirect_to root_path
+            redirect_to login_path
         else
             flash.now[:danger] = "Invalid input"
             render :new

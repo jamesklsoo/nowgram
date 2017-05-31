@@ -38,7 +38,7 @@
             
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.fullname %><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><%= image_tag current_user.avatar%></li>
+                <li><%= image_tag current_user.avatar.thumb%></li>
                 <li><%= link_to "Profile", user_path(current_user.id) %></li>
               	<li><%= link_to "Edit Profile", edit_user_path(current_user.id)%></li>
 								<li><%= link_to "Search for Users", users_path%></li>
