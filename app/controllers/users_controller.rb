@@ -64,7 +64,6 @@ class UsersController < ApplicationController
     end
     
     def update_params
-        #need to add website and other instagrams options in table
         params.require(:user).permit(:email, :fullname, :username, :password, :website, :bio, :gender, :phone_num, :avatar)
     end
 
