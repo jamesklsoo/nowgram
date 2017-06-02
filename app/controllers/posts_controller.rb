@@ -18,7 +18,7 @@ class PostsController < ApplicationController
         @post.user_id = current_user.id
         @post.time = Time.now
         if @post.save
-            flash[:success] = "User has been created."
+            flash[:success] = "Post has been created."
             redirect_to post_path(@post)
         else
             flash.now[:danger] = "There's seem to be an error."

@@ -29,8 +29,9 @@
 
 <br>
 <div class="row">
- 
-    <%= render(partial: 'users/list', locals: { users: @users }) %>
+    <div id="filterrific_results">
+      <%= render(partial: 'users/list', locals: { users: @users }) %>
+    </div>
   </div>
 </div>
 

@@ -47,7 +47,7 @@ RSpec.describe User, type: :model do
     end
 
     describe "cannot be created without a password" do
-      When(:user) { User.create(email: "cyusheng93@gmail.com", fullname: "Fatcat") }
+      When(:user) { User.create(email: "testingfatcat@gmail.com", fullname: "Fatcat") }
       Then { user.valid? == false }
     end
 
